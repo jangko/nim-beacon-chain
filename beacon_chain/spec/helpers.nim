@@ -146,8 +146,11 @@ func int_to_bytes4*(x: uint64): array[4, byte] =
   result[3] = ((x shr 24) and 0xff).byte
 
 # https://github.com/ethereum/eth2.0-specs/blob/v0.6.3/specs/core/0_beacon-chain.md#bls_domain
-func compute_domain(domain_type: DomainType, fork_version: array[4, byte]):
-    uint64 =
+func compute_domain*(
+        domain_type: DomainType,
+        fork_version: array[4, byte]): uint64 =
+  # TODO: Spec introduced an alias for Version = array[4, byte]
+  #       and a default parameter to compute_domain
   var buf: array[8, byte]
   buf[0..3] = fork_version
   buf[4..7] = int_to_bytes4(domain_type.uint64)

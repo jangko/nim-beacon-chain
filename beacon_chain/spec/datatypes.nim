@@ -235,7 +235,7 @@ type
   BeaconBlockBody* = object
     randao_reveal*: ValidatorSig
     eth1_data*: Eth1Data
-    graffiti*: Eth2Digest
+    graffiti*: Eth2Digest # TODO make that raw bytes
     proposer_slashings*: seq[ProposerSlashing]
     attester_slashings*: seq[AttesterSlashing]
     attestations*: seq[Attestation]
@@ -360,6 +360,8 @@ type
 
   # https://github.com/ethereum/eth2.0-specs/blob/v0.8.1/specs/core/0_beacon-chain.md#fork
   Fork* = object
+    # TODO: Spec introduced an alias for Version = array[4, byte]
+    #       and a default parameter to compute_domain
     previous_version*: array[4, byte]
     current_version*: array[4, byte]
 

@@ -15,6 +15,7 @@ import
 func verify_merkle_branch(leaf: Eth2Digest, proof: openarray[Eth2Digest], depth: uint64, index: uint64, root: Eth2Digest): bool =
   ## Verify that the given ``leaf`` is on the merkle branch ``proof``
   ## starting with the given ``root``.
+  # TODO: rename to is_valid_merkle_branch
   var
     value = leaf
     buf: array[64, byte]
