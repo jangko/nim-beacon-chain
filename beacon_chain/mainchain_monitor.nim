@@ -1,6 +1,6 @@
 import
-  chronos, json_rpc/rpcclient,
-  spec/[datatypes, digest]
+  nativesockets,
+  spec/[datatypes]
 
 type
   MainchainMonitor* = object
